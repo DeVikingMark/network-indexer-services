@@ -60,7 +60,7 @@ const AppContents = () => {
       !loading &&
       isConnected &&
       !hasController &&
-      // must have record, otherwises should redirect to register page.
+      // must have record, otherwise should redirect to the register page.
       !isUndefined(indexer) &&
       location.pathname !== '/controller-management'
     ) {
@@ -68,14 +68,14 @@ const AppContents = () => {
       return;
     }
 
-    // database don't have indexer record so must register.
+    // database doesn't have an indexer record so must register.
     if (!loading && !indexer && location.pathname !== '/register') {
       history.push('/register');
     }
   };
 
-  // note this flow, after allow all wallet can be access, the coordinatorIndexer is a async fetch,
-  // all of other components dependent the result.
+  // note this flow, after allowing all wallets can be accessed, the coordinatorIndexer is an async fetch,
+  // all of the other components are dependent on the result.
   // and hasController also be dependent for otehr components.
   useMount(async () => {
     await load();
